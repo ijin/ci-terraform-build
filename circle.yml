@@ -1,6 +1,7 @@
 machine:
   environment:
     GOROOT: /home/ubuntu/go
+    GOMAXPROCS: 8
     PATH: /home/ubuntu/go/bin:$PATH
     SRC: /home/ubuntu/.go_workspace/src/github.com/hashicorp/terraform
     #PATH: ~/$SRC/bin:$PATH
