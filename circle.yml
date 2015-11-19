@@ -6,6 +6,7 @@ dependencies:
   pre:
     - mkdir -p $SRC
     - git clone https://github.com/hashicorp/terraform.git $SRC/
+    - ls ~/ && ls $SRC
     - cd $SRC/terraform && make updatedeps && make dev
     - terraform version
   cache_directories:
