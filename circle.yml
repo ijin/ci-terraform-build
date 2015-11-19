@@ -1,6 +1,6 @@
 machine:
   environment:
-    SRC: $GOPATH/src/github.com/hashicorp/terraform
+    SRC: /home/ubuntu/.go_workspace/src/github.com/hashicorp/terraform
     PATH: ~/$SRC/bin:$PATH
 dependencies:
   pre:
