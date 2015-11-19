@@ -1,16 +1,15 @@
 machine:
   environment:
-    SRC: $GOPATH/src/github.com/hashicorp
-    PATH: ~/$SRC/terraform/bin:$PATH
+    SRC: $GOPATH/src/github.com/hashicorp/terraform
+    PATH: ~/$SRC/bin:$PATH
 dependencies:
   pre:
     - mkdir -p $SRC
-    - git clone https://github.com/hashicorp/terraform.git $SRC/
-    - ls ~/ && ls $SRC
-    - cd $SRC/terraform && make updatedeps && make dev
-    - terraform version
+    - git clone https://github.com/hashicorp/terraform.git $SRC
+    - cd $SRC && make updatedeps && make dev
+    - terraform -version
   cache_directories:
-    - ~/$SRC/terraform/bin
+    - ~/$SRC/bin
 test:
   pre:
     - ls -alhtr ~/
