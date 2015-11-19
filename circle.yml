@@ -1,16 +1,22 @@
 machine:
   environment:
+    GOROOT: /home/ubuntu/go
+    PATH: /home/ubuntu/go/bin:$PATH
     SRC: /home/ubuntu/.go_workspace/src/github.com/hashicorp/terraform
-    PATH: ~/$SRC/bin:$PATH
+    #PATH: ~/$SRC/bin:$PATH
 checkout:
   post:
     - git config --global url.ssh://git@github.com/.insteadOf https://github.com/
 dependencies:
   pre:
+    - if [[ ! -e /home/ubuntu/go/bin/go ]]; then cd /home/ubuntu; curl https://storage.googleapis.com/golang/go1.5.1.linux-amd64.tar.gz | tar -xz; fi
+    - go version
     - go get -u github.com/hashicorp/terraform
+    - echo $GOPATH
     - cd $SRC && make updatedeps && make dev
     - terraform -version
   cache_directories:
+    - /home/ubuntu/go
     - ~/$SRC/bin
 test:
   pre:
