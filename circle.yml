@@ -6,6 +6,7 @@ dependencies:
   pre:
     #- mkdir -p $SRC
     #- git clone https://github.com/hashicorp/terraform.git $SRC
+    - go get github.com/mitchellh/gox
     - go get github.com/hashicorp/terraform
     - cd $SRC && make updatedeps && make dev
     - terraform -version
